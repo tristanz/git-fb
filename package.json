@@ -1,18 +1,19 @@
 {
+  "name": "git-fb",
+  "version": "0.3.0",
   "author": {
     "name": "Tejesh Mehta",
     "email": "tejesh.mehta@gmail.com"
   },
-  "name": "git-fb",
   "keywords": [
+    "gihub flow",
     "github",
     "github-flow",
     "git",
     "git-flow",
     "feature-branch"
   ],
-  "description": "Git feature-branch workflow helper commands",
-  "version": "0.2.4",
+  "description": "Git feature-branch/github-flow helper commands",
   "repository": {
     "type": "git",
     "url": "https://github.com/tjmehta/git-fb.git"
@@ -24,7 +25,7 @@
   "bin": {
     "git-fb": "./bin/git-fb",
     "git-sync": "./bin/git-sync",
-    "git-pullr": "./bin/git-pullr",
+    "git-pr": "./bin/git-pr",
     "git-done": "./bin/git-done",
     "git-boom": "./bin/git-boom",
     "git-wip": "./node_modules/git-wip/bin/git-wip",
@@ -32,16 +33,12 @@
     "git-resume": "./node_modules/git-wip/bin/git-resume"
   },
   "dependencies": {
-    "commander": "~1.1.1",
-    "github": "~0.1.8",
-    "keychain": "~0.0.4",
-    "procstreams": "~0.3.0",
-    "git-wip": "~0.1.2"
+    "async": "^0.9.0",
+    "commander": "^1.1.1",
+    "execSync": "^1.0.1-pre",
+    "git-wip": "^0.1.2",
+    "github": "^0.2.1",
+    "github-slug": "0.0.1"
   },
-  "readme": "Git feature-branch workflow helper commands",
-  "readmeFilename": "Readme.md",
-  "dist": {
-    "shasum": "1fd804457e95575da454edb83c480eb91722c6d7"
-  },
-  "_from": "tjmehta/git-fb"
+  "readmeFilename": "README.md"
 }

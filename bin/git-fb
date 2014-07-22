@@ -22,7 +22,7 @@ then
   git pull origin $src &&
   git branch $name &&
   git checkout $name &&
-  git push origin $name &&
+  git push -u origin $name &&
   if [ $cur == $src ]
   then
     if [[ $stashout != *"No local changes to save"* ]]

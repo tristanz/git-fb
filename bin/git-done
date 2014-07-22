@@ -6,7 +6,6 @@ don=`git rev-parse --abbrev-ref HEAD`
 test -z $int && int=`git config --get gitfb.integrationBranch`
 test -z $int && int=master
 
-
 git checkout $int &&
 git merge $don &&
 git commit -m "Merged with $don." &&

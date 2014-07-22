@@ -1,6 +1,7 @@
 ##GitHub Flow Commands (feature-branch helpers)
 
 ##Bash Commands
+
 #### ```git fb new-feature```
 #### ```git sync```
 #### ```git pullr "title" "description"```
@@ -23,12 +24,20 @@ $ npm install -g git-fb
 
 ##Setup
 
-If you want to setup you integration branch as something other than master use the following command:
+Add a Github OAuth Token as an environmental variables.  For instance, in `~/.bash_profile`
+
 ```sh
-$ git config gitfb.integrationBranch <integration-branch> # defaults to master
-$ git config user.name <github-username> # not email
+export GITHUB_TOKEN=YourAccessToken
 ```
 
+You can generate a access token here: https://github.com/settings/applications#personal-access-tokens
+
+
+If you want to setup you integration branch as something other than master use the following command:
+
+```sh
+$ git config gitfb.integrationBranch <integration-branch> # defaults to master
+```
 
 ##Documentation
 

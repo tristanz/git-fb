@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var GitHub = require('github');
+var GitHubInfo = require('../lib/github-info');
+var exec = require('execSync').exec;
+program
+  .usage('[title] [description]')
+  .parse(process.argv);
+
+var title        = program.args[0];
+var description  = program.args[1];
+
+if (!title) {
+  console.log('Pull request title is required.');
+  process.exit(1);
+}
+
+var githubInfo = new GitHubInfo();
+githubInfo.get(function (err, info) {
+  if (err) { onError(err); } else {
+    var github = new GitHub({
+      version: '3.0.0',
+      timeout: 5000
+    });
+    var token = process.env.GITHUB_TOKEN;
+    if (!token) {
+      console.log("You must set a GITHUB_TOKEN environmental variable to use authenticated methods.");
+      process.exit(1);
+    }
+    github.authenticate({
+      type: 'oauth',
+      token: token,
+    });
+    var parts = info.slug.split("/");
+    github.pullRequests.create({
+      user  : parts[0],
+      repo  : parts[1],
+      title : title,
+      body  : description,
+      base  : info.integrationBranch,
+      head  : info.branch
+    }, function (err, resp) {
+      if (err) {
+        err = JSON.parse(err);
+        for (var i = 0; i < err.errors.length; i++) {
+          console.log(err.errors[i].message);
+        };
+        process.exit(1);
+      }
+      console.log('Pull request: ' + resp.html_url);
+    });
+  }
+});
